@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
   def last_active
-    render plain: 'hello'
+    @article = Article.last_active
   end
 end
