@@ -29,6 +29,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'factory_girl_rails', '~> 4.8'
   gem 'selenium-webdriver'
+  gem 'validates_timeliness', '~> 4.0'
 end
 
 group :development do

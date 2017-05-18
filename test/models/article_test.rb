@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  test 'custom article with expiration in the future' do
-    custom_article = create(:custom_article)
-    assert custom_article.expired_at > Time.now
+  test 'article should have title' do
+    article = build(:article, title: nil)
+    assert_not article.save
+  end
+
+  test 'article should expire in the future' do
+    article = build(:article, expired_at: Date.yesterday)
+    assert_not article.save
   end
 end
