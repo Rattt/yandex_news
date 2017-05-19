@@ -4,11 +4,25 @@ class Article < ApplicationRecord
   validates_presence_of :title
   validates_datetime :expired_at, on_or_after: :now, allow_nil: true
 
+  after_create :broadcast_last_active
+
   def self.custom
     find_by('expired_at >= ?', Time.now)
   end
 
   def self.last_active
-    custom || from_yandex.first
+    custom || from_yandex.last
+  end
+
+  private
+
+  def broadcast_last_active
+    article = self.class.last_active
+    if article
+      ActionCable.server.broadcast('last_article',
+                                   title: article.title,
+                                   annotation: article.annotation,
+                                   expired_at: article.expired_at)
+    end
   end
 end
