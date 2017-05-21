@@ -1,3 +1,5 @@
 App.last_article = App.cable.subscriptions.create 'LastArticleChannel',
-  received: (data) ->
-    console.log(data)
+  received: (article) ->
+    document.getElementById('article-title').innerHTML = article.title;
+    document.getElementById('article-annotation').innerHTML = article.annotation;
+    console.log(article)

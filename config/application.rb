@@ -9,5 +9,8 @@ module YandexNews
     config.load_defaults 5.1
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.i18n.available_locales = [:en, :ru]
+    config.i18n.default_locale = :ru
   end
 end
