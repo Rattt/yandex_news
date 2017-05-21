@@ -22,6 +22,7 @@ class Article < ApplicationRecord
       ActionCable.server.broadcast('last_article',
                                    title: article.title,
                                    annotation: article.annotation,
+                                   created_at: created_at,
                                    expired_at: article.expired_at)
     end
   end

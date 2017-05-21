@@ -13,3 +13,12 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+function humanizedDatetime(datetimeString) {
+  var d = new Date(datetimeString);
+  var date = d.getFullYear() + '-' +
+             ("0" + (d.getMonth() + 1)).slice(-2) + '-' +
+             ("0" + d.getDate()).slice(-2);
+  var time = d.toLocaleTimeString('ru-RU');
+  return date + ' ' + time;
+}
