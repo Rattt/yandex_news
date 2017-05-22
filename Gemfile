@@ -19,13 +19,14 @@ gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'validates_timeliness', '~> 4.0'
+gem 'whenever', '~> 0.9', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'factory_girl_rails', '~> 4.8'
   gem 'selenium-webdriver'
-  gem 'validates_timeliness', '~> 4.0'
 end
 
 group :development do
