@@ -1,10 +1,10 @@
 class Article < ApplicationRecord
   scope :from_yandex, -> { where(expired_at: nil).order(:created_at) }
 
-  validates_presence_of :title
+  validates_presence_of :title, :annotation
   validates_datetime :expired_at, on_or_after: :now, allow_nil: true
 
-  after_create :broadcast_last_active
+  after_save :broadcast_last_active
 
   def self.custom
     find_by('expired_at >= ?', Time.now)
