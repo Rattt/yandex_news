@@ -14,6 +14,11 @@ class Article < ApplicationRecord
     custom || from_yandex.last
   end
 
+  def custom?
+    return false unless expired_at
+    expired_at >= Time.now
+  end
+
   private
 
   def broadcast_last_active
@@ -24,6 +29,14 @@ class Article < ApplicationRecord
                                    annotation: article.annotation,
                                    created_at: created_at,
                                    expired_at: article.expired_at)
+
+      if article.custom?
+        # download new yandex article
+        # when it will be saved, broadcast_last_active method will be raised
+        # and it will change custom article to yandex one in opened pages
+        YandexArticleDownloadJob.set(wait_until: article.expired_at + 1.second)
+                                .perform_later
+      end
     end
   end
 end
