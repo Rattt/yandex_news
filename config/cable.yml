@@ -1,6 +1,6 @@
 local: &local
   adapter: redis
-  url: redis://localhost:6379
+  url: <%= ENV.fetch("REDIS_URL") { 'redis://localhost:6379' } %>
   channel_prefix: yandex_news
 
 test:
