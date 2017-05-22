@@ -1,0 +1,17 @@
+ru:
+  activerecord:
+    models:
+      article:
+        one: "Новость"
+        other: "Новости"
+    attributes:
+      article:
+        title: "Заголовок"
+        annotation: "Аннотация"
+        expired_at: "Время истечения"
+    errors:
+      models:
+        article:
+          attributes:
+            expired_at:
+              on_or_after: "должно быть моментом в будущем"

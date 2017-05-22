@@ -1,0 +1,27 @@
+<%= form_with(model: article, local: true, url: '/admin') do |form| %>
+  <% if article.errors.any? %>
+    <div class="article-item">
+      <p><%= article.errors.full_messages.join('. ')%></li></p>
+    </div>
+  <% end %>
+
+  <div class="field article-item">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :article_title %>
+  </div>
+
+  <div class="field article-item">
+    <%= form.label :annotation %>
+    <%= form.text_field :annotation, id: :article_annotation %>
+  </div>
+
+  <div class="field article-item">
+    <%= form.label :expired_at %>
+    <%= form.datetime_select :expired_at, id: :article_expired_at %>
+  </div>
+
+  <div class="actions article-item">
+    <%= form.submit 'Сохранить' %>
+    <%= link_to 'Отменить', root_path %>
+  </div>
+<% end %>

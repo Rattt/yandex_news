@@ -1,13 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <div class="flex-container">
   <div class="flex-row">
-    <p class="article-text">
-      <strong id="article-title"><%= @article&.title %></strong>
-    <p>
-    <p class="article-text" id="article-annotation"><%= @article&.annotation %></p>
+    <h3 class="article-item" id="article-title"><%= @article&.title %></h3>
+    <p class="article-item" id="article-annotation"><%= @article&.annotation %></p>
+    <p class="article-item" id="article-creation-date"><%= humanized_datetime(@article&.created_at) %></p>
 
     <br>
-    <p class="article-text" id="article-creation-date"><%= humanized_datetime(@article&.created_at) %></p>
+    <div class="article-item">
+      <%= link_to('Изменить авторскую новость', admin_path) %>
+    <div>
   </div>
 </div>

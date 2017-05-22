@@ -23,6 +23,7 @@
   width: 800px;
 }
 
-.article-text {
+.article-item {
   text-align: center;
+  margin-top: 10px;
 }
